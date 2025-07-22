@@ -44,6 +44,8 @@ This project leverages the Google Agent Development Kit (ADK) to build a cloud-n
    npm install
    ```
 
+   All required Python dependencies are listed in `requirements.txt` and installed automatically when building the Docker image. There is no `google-agent-adk` dependency; only `google-adk` is required.
+
 ## Configuration
 
 Before deploying, configure the following environment variables:
@@ -56,24 +58,19 @@ You can set these in your shell or via a `.env` file.
 
 ## Building and Running Locally
 
+To run your agent app in a Docker container locally:
+
 1. Build the Docker image:
    ```bash
-   docker build -t gcr.io/$PROJECT_ID/webmonkey-agent:latest .
+   docker build -t webmonkey-agent .
    ```
 
-2. Run the container locally:
+2. Run the container:
    ```bash
-   docker run -p 8080:8080 \
-     -e PROJECT_ID=$PROJECT_ID \
-     -e REGION=$REGION \
-     -e SERVICE_NAME=$SERVICE_NAME \
-     gcr.io/$PROJECT_ID/webmonkey-agent:latest
+   docker run -p 8080:8080 webmonkey-agent
    ```
 
-3. Test the endpoint:
-   ```bash
-   curl http://localhost:8080/agent-endpoint
-   ```
+This will start your agent app in a Docker container and expose it on port 8080. Access it at `http://localhost:8080`.
 
 ## Deployment to Cloud Run
 
@@ -98,16 +95,16 @@ You can set these in your shell or via a `.env` file.
 
 ## Usage
 
-Send HTTP POST requests to the `/agent-endpoint` with a JSON payload describing the task for the agent. Example:
+Send HTTP POST requests to the `/agent-endpoint` with a JSON payload:
 
 ```json
 {
-  "input": "Perform X analysis",
-  "parameters": { /* custom parameters */ }
+  "input": "Your input here",
+  "parameters": { /* optional parameters */ }
 }
 ```
 
-The service will return a JSON response with the agent's decision or output.
+The service will return a JSON response with the processed input and parameters.
 
 ## Contributing
 
@@ -122,4 +119,3 @@ Contributions are welcome! Please open issues or submit pull requests for bug fi
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-

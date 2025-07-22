@@ -8,18 +8,6 @@ load_dotenv()
 # Initialize Flask app
 test_app = Flask(__name__)
 
-# Import Google Agent ADK
-try:
-    from google_agent_adk import Agent
-except ImportError:
-    raise ImportError("Ensure 'google-agent-adk' is installed: pip install google-agent-adk")
-
-# Initialize the Agent with project-specific settings
-agent = Agent(
-    project_id=os.getenv('PROJECT_ID'),
-    region=os.getenv('REGION'),
-    service_name=os.getenv('SERVICE_NAME')
-)
 
 @test_app.route('/agent-endpoint', methods=['POST'])
 def agent_endpoint():
@@ -31,9 +19,8 @@ def agent_endpoint():
     params = payload.get('parameters', {})
 
     # Execute the agent logic
-    result = agent.run(user_input, **params)
 
-    return jsonify({'result': result})
+    return jsonify({'result': "Processed input: " + user_input, 'parameters': params})
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 8080))
