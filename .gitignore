@@ -5,7 +5,7 @@ __pycache__/
 *.pyd
 
 # Ignore environment files
-agents/web_agent/.env
+agents/web_agent/web_agent/.env
 
 # Ignore Selenium profile and browser logs
 selenium_profile/
