@@ -1,4 +1,7 @@
-Flask>=2.2.0
+fastapi>=0.110.0
+uvicorn>=0.29.0
 Gunicorn>=20.0.0
 python-dotenv>=1.0.0
 google-adk
+selenium
+undetected_chromedriver

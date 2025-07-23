@@ -1,0 +1,19 @@
+# Ignore Python cache and build files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore environment files
+agents/web_agent/.env
+
+# Ignore Selenium profile and browser logs
+selenium_profile/
+selenium_profile/*
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
