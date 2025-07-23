@@ -26,7 +26,7 @@ WebMonkey is a Python-based web automation agent designed to search for products
 3. **Run the agent**:
    - From the `agents` directory, start the agent using Google ADK:
      ```bash
-     python -m web_agent.agent
+     adk web
      ```
    - The agent will launch a browser window for automation. Captchas are automatically solved; no manual intervention is required.
 
